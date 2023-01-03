@@ -24,7 +24,7 @@ class ImagesPicker {
     if (maxSize != null) {
       assert(maxSize > 0, 'maxSize must > 0');
     }
-    try {
+//     try {
       List<dynamic>? res = await _channel.invokeMethod('pick', {
         "count": count,
         "pickType": pickType.toString(),
@@ -54,9 +54,9 @@ class ImagesPicker {
         return output;
       }
       return null;
-    } catch (e) {
-      return null;
-    }
+//     } catch (e) {
+//       return null;
+//     }
   }
 
   static Future<List<Media>?> openCamera({
