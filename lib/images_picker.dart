@@ -14,7 +14,7 @@ class ImagesPicker {
     CropOption? cropOpt,
     int? maxSize,
     double? quality,
-    Language language = Language.System,
+    Language language = Language.English,
   }) async {
     assert(count > 0, 'count must > 0');
     if (quality != null) {
