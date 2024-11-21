@@ -143,7 +143,7 @@ public class GlideEngine implements ImageEngine {
                 .load(url)
                 .override(200, 200)
                 .centerCrop()
-                .apply(new RequestOptions().placeholder(R.drawable.picture_image_placeholder))
+//                .apply(new RequestOptions().placeholder(R.drawable.picture_image_placeholder))
                 .into(imageView);
     }
 
