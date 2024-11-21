@@ -318,7 +318,9 @@ public class ImagesPickerPlugin implements FlutterPlugin, MethodCallHandler, Act
   private String copyToTmp(String originPath) {
     String resPath = originPath;
     if (originPath != null) {
-      String suffix = originPath.substring(originPath.lastIndexOf('.'));
+//      String suffix = originPath.substring(originPath.lastIndexOf('.'));
+      String suffix = "jpeg";
+
       File from = new File(originPath);
       File to;
       try {
@@ -352,7 +354,8 @@ public class ImagesPickerPlugin implements FlutterPlugin, MethodCallHandler, Act
   private void saveImageToGallery(final String path, String albumName) {
     boolean status = false;
     if (path != null){
-      String suffix = path.substring(path.lastIndexOf('.')+1);
+//      String suffix = path.substring(path.lastIndexOf('.')+1);
+      String suffix = "jpeg";
       Bitmap bitmap = BitmapFactory.decodeFile(path);
       status = FileSaver.saveImage(context, bitmap, suffix, albumName);
     }
