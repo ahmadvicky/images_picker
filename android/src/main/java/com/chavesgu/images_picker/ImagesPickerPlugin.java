@@ -317,40 +317,45 @@ public class ImagesPickerPlugin implements FlutterPlugin, MethodCallHandler, Act
 
   private String copyToTmp(String originPath) {
     String resPath = originPath;
-    String suffix = originPath.substring(originPath.lastIndexOf('.'));
-    File from = new File(originPath);
-    File to;
-    try {
-      File outputDir = context.getCacheDir();
-      to = File.createTempFile("image_picker_"+ UUID.randomUUID().toString(), suffix, outputDir);
-
+    if (originPath != null) {
+      String suffix = originPath.substring(originPath.lastIndexOf('.'));
+      File from = new File(originPath);
+      File to;
       try {
-        InputStream in = new FileInputStream(from);
-        OutputStream out = new FileOutputStream(to);
-        byte[] buf = new byte[1024];
+        File outputDir = context.getCacheDir();
+        to = File.createTempFile("image_picker_"+ UUID.randomUUID().toString(), suffix, outputDir);
+
         try {
-          int len;
-          while ((len = in.read(buf)) > 0) {
-            out.write(buf, 0, len);
+          InputStream in = new FileInputStream(from);
+          OutputStream out = new FileOutputStream(to);
+          byte[] buf = new byte[1024];
+          try {
+            int len;
+            while ((len = in.read(buf)) > 0) {
+              out.write(buf, 0, len);
+            }
+            resPath = to.getAbsolutePath();
+          } catch (IOException e) {
+            Log.w("image_picker", e.getLocalizedMessage());
           }
-          resPath = to.getAbsolutePath();
-        } catch (IOException e) {
+        } catch (FileNotFoundException e) {
           Log.w("image_picker", e.getLocalizedMessage());
         }
-      } catch (FileNotFoundException e) {
+      } catch (IOException e) {
         Log.w("image_picker", e.getLocalizedMessage());
       }
-    } catch (IOException e) {
-      Log.w("image_picker", e.getLocalizedMessage());
     }
+
     return resPath;
   }
 
   private void saveImageToGallery(final String path, String albumName) {
     boolean status = false;
-    String suffix = path.substring(path.lastIndexOf('.')+1);
-    Bitmap bitmap = BitmapFactory.decodeFile(path);
-    status = FileSaver.saveImage(context, bitmap, suffix, albumName);
+    if (path != null){
+      String suffix = path.substring(path.lastIndexOf('.')+1);
+      Bitmap bitmap = BitmapFactory.decodeFile(path);
+      status = FileSaver.saveImage(context, bitmap, suffix, albumName);
+    }
     _result.success(status);
   }
 
