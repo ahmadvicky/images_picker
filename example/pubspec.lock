@@ -83,13 +83,13 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "4.0.2"
-  images_picker:
+  images_picker_v2:
     dependency: "direct main"
     description:
       path: ".."
       relative: true
     source: path
-    version: "1.2.11"
+    version: "1.0.6"
   leak_tracker:
     dependency: transitive
     description:

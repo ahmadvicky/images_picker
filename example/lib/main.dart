@@ -4,7 +4,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
 
-import 'package:images_picker/images_picker.dart';
+import 'package:images_picker_v2/images_picker.dart';
 
 void main() {
   runApp(MyApp());
