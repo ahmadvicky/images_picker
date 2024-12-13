@@ -1,4 +1,4 @@
-//#import <Flutter/Flutter.h>
-//
-//@interface ImagesPickerPlugin : NSObject<FlutterPlugin>
-//@end
+#import <Flutter/Flutter.h>
+
+@interface ImagesPickerPlugin : NSObject<FlutterPlugin>
+@end
